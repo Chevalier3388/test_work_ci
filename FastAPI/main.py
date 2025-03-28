@@ -1,8 +1,7 @@
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI
-
 from database import create_tables, delete_tables
+from fastapi import FastAPI
 from router import router as recipes_routers
 
 

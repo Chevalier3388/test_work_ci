@@ -1,7 +1,6 @@
 from typing import Annotated, List, Union
 
 from fastapi import APIRouter, Depends, HTTPException
-
 from repository import RecipRepository
 from schmas import (
     SRecipeAdd,

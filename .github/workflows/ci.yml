@@ -42,7 +42,7 @@ jobs:
       - name: Run isort (check mode)
         run: |
           . venv/bin/activate
-          isort --check-only --profile black --diff .
+          isort --check-only --profile black --skip venv .
 
       - name: Run mypy
         run: |

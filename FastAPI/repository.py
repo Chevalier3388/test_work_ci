@@ -1,7 +1,6 @@
-from sqlalchemy import select
-
 from database import RecipesOrm, new_session
 from schmas import SRecipeAdd
+from sqlalchemy import select
 
 
 class RecipRepository:
