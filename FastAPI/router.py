@@ -34,7 +34,7 @@ async def add_recipe(recipe: Annotated[SRecipeAdd, Depends()]):
     response_model=List[SRecipeListResponse],
     summary="Получить список рецептов",
     description="Возвращает список рецептов с полями: "
-                "название, количество просмотров, время приготовления.",
+    "название, количество просмотров, время приготовления.",
 )
 async def get_recipes():
     recipes = await RecipRepository.get_all_recipes()
@@ -52,8 +52,6 @@ async def get_recipe(id: int):
     if not recipe:
         raise HTTPException(
             status_code=404,
-            detail=SRecipeBadResponse(
-                msg=f"Рецепт c id {id} не найден"
-            ).model_dump(),
+            detail=SRecipeBadResponse(msg=f"Рецепт c id {id} не найден").model_dump(),
         )
     return recipe

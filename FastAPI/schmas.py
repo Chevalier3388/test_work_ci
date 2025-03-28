@@ -19,6 +19,7 @@ class SRecipeAdd(SRecipe):
     """
     Для добавления рецепта
     """
+
     pass
 
 
@@ -27,6 +28,7 @@ class SRecipeResponse(SRecipe):
     """
     Для детальной информации о рецепте.
     """
+
     pass
 
 
@@ -34,6 +36,7 @@ class SRecipeBadResponse(BaseModel):
     """
     Для отсутствующего рецепта.
     """
+
     msg: str
 
 
@@ -55,6 +58,7 @@ class SRecipeCreateResponse(BaseModel):
     """
     Для ответа на добавление рецепта
     """
+
     msg: str
     recipe_title: str
     recipe_id: int
