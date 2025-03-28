@@ -47,4 +47,4 @@ jobs:
       - name: Run mypy
         run: |
           . venv/bin/activate
-          mypy .
+          python - m mypy .
