@@ -2,14 +2,16 @@ from typing import Optional
 
 from pydantic import BaseModel, ConfigDict
 
+
 class SRecipe(BaseModel):
     """
     Базовый класс
     """
+
     title: str
     cooking_time: int
-    ingredients: Optional[str] = None  # вариант 1
-    description: str | None = None  # вариант 2
+    ingredients: Optional[str] = None
+    description: Optional[str] = None
 
 
 # Схема для добавления рецепта
@@ -27,6 +29,7 @@ class SRecipeResponse(SRecipe):
     """
     pass
 
+
 class SRecipeBadResponse(BaseModel):
     """
     Для отсутствующего рецепта.
@@ -39,6 +42,7 @@ class SRecipeListResponse(BaseModel):
     """
     Для списка рецептов в таблице.
     """
+
     title: str
     cooking_time: int
     views: int

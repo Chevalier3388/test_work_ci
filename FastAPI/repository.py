@@ -1,7 +1,6 @@
-from database import new_session, RecipesOrm
-
 from sqlalchemy import select
 
+from database import RecipesOrm, new_session
 from schmas import SRecipeAdd
 
 
@@ -17,25 +16,17 @@ class RecipRepository:
             await session.commit()
             return recipe.title, recipe.id
 
-
-
     @classmethod
     async def get_all_recipes(cls):
         async with new_session() as session:
             query = select(
-                RecipesOrm.title,
-                RecipesOrm.views,
-                RecipesOrm.cooking_time
+                RecipesOrm.title, RecipesOrm.views, RecipesOrm.cooking_time
             ).order_by(RecipesOrm.views.desc(), RecipesOrm.cooking_time)
 
             result = await session.execute(query)
 
             recipes_models = [
-                {
-                    "title": row[0],
-                    "views": row[1],
-                    "cooking_time": row[2]
-                }
+                {"title": row[0], "views": row[1], "cooking_time": row[2]}
                 for row in result.fetchall()
             ]
             return recipes_models

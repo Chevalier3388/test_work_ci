@@ -1,12 +1,15 @@
-from  fastapi.testclient import TestClient
-from  main import app
+from fastapi.testclient import TestClient
+
+from main import app
 
 client = TestClient(app)
-data = ("/recipes?"
-        "title=Торт%20Шоколадный&"
-        "cooking_time=60&"
-        "ingredients=Шоколад%2C%20Мука%2C%20Сахар%2C%20Яйца&"
-        "description=Вкусный%20шоколадный%20торт")
+data = (
+    "/recipes?"
+    "title=Торт%20Шоколадный&"
+    "cooking_time=60&"
+    "ingredients=Шоколад%2C%20Мука%2C%20Сахар%2C%20Яйца&"
+    "description=Вкусный%20шоколадный%20торт"
+)
 
 # data = {
 #         "title": "Торт Шоколадный",
@@ -14,6 +17,7 @@ data = ("/recipes?"
 #         "ingredients": "Шоколад, Мука, Сахар, Яйца",
 #         "description": "Вкусный шоколадный торт"
 #     }
+
 
 def test_add_recipe():
     response = client.post(data)
@@ -24,7 +28,7 @@ def test_add_recipe():
     assert response.json() == {
         "msg": "Рецепт добавлен",
         "recipe_title": "Торт Шоколадный",
-        "recipe_id": recipe_id
+        "recipe_id": recipe_id,
     }
     print(f"Рецепт добавлен с ID: {recipe_id}")
 

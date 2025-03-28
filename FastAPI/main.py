@@ -1,13 +1,9 @@
-from fastapi import FastAPI
-
-
-
 from contextlib import asynccontextmanager
+
+from fastapi import FastAPI
 
 from database import create_tables, delete_tables
 from router import router as recipes_routers
-
-
 
 
 @asynccontextmanager
@@ -19,6 +15,6 @@ async def lifespan(app: FastAPI):
     yield
     print("Выключение")
 
+
 app = FastAPI(lifespan=lifespan)
 app.include_router(recipes_routers)
-
