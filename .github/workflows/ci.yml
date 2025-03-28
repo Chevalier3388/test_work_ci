@@ -47,5 +47,5 @@ jobs:
       - name: Run mypy
         run: |
           . venv/bin/activate
-          export PYTHONPATH=./FastAPI
+          export PYTHONPATH=../FastAPI
           mypy .
